@@ -23,29 +23,31 @@ export const Home = (props) => {
 	const [result, setResult] = useState([]); // stores what we get back in the array to render to the site
 
 	const {store, actions} = useContext(Context)
+	console.log(store.results)
 
 	useEffect(() => {
-		actions.searchGames(value)
+		actions.searchGames(`search=${value}`)
 
 	}, [value]); // triggered not every render cycle, but only when value changes
   
 
 	return (
 		<div>
-			<p className="titleText"> Game Search </p>
+			{/* <p className="titleText"> Game Search </p>
 				<input type="text"
 				className="searchBar"
 				onChange={(e) => setValue(e.target.value)} // sets the value to the event =>
 				value = {value}
-				/>
+				/> */}
 				<div className="searchBack">
-					{/* {result.map((result, index) => ( // index will include key value
+					{store.results.map((result, index) => ( // index will include key value
 						<a href="#" key={index}>
 							<div className="searchEntry">
-								{result}
+								{result.name}
+								<img src={result.background_image} />
 							</div>
 						</a>
-					))} */}
+					))}
 				</div>
 		</div>
 	)
