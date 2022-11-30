@@ -32,19 +32,23 @@ export const Home = (props) => {
   
 
 	return (
-		<div>
+		<div className="container">
 			{/* <p className="titleText"> Game Search </p>
 				<input type="text"
 				className="searchBar"
 				onChange={(e) => setValue(e.target.value)} // sets the value to the event =>
 				value = {value}
 				/> */}
-				<div className="searchBack">
+				<div className="searchBack d-flex"> 
 					{store.results.map((result, index) => ( // index will include key value
 						<a href="#" key={index}>
-							<div className="searchEntry">
-								{result.name}
-								<img src={result.background_image} />
+							<div className="searchEntry container">
+								<div className="">
+									<img src={result.background_image} rounded className="img-thumbnail" />
+								</div>
+								<div className="">
+									{result.name}
+								</div>
 							</div>
 						</a>
 					))}
