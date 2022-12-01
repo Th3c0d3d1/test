@@ -3,6 +3,8 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Context } from '../store/appContext.js'
 import { Result } from "parse-github-url";
+import { Link } from "react-router-dom"; 
+import { Single } from "./single";
 
 // export const Home = () => (
 // 	<div className="text-center mt-5">
@@ -39,18 +41,19 @@ export const Home = (props) => {
 				onChange={(e) => setValue(e.target.value)} // sets the value to the event =>
 				value = {value}
 				/> */}
-				<div className="searchBack d-flex"> 
+				<div className="searchBack d-flex-inline"> 
 					{store.results.map((result, index) => ( // index will include key value
-						<a href="#" key={index}>
-							<div className="searchEntry container">
+						// <a href="#" key={index}>
+							<div className="searchEntry">
 								<div className="">
-									<img src={result.background_image} rounded className="img-thumbnail" />
+									<img src={result.background_image} className="img-thumbnail rounded" />
 								</div>
 								<div className="">
 									{result.name}
 								</div>
+								<Link to ={`/single/${ result.slug}`}>Go to Game!</ Link>
 							</div>
-						</a>
+						// </a>
 					))}
 				</div>
 		</div>
